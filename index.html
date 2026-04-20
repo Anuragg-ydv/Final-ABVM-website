@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adarsh Bal Vidya Mandir - Junior High School</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #f97316;
+    --deep-orange: #ea580c;
+    --blue: #1d4ed8;
+    --deep-blue: #1e3a8a;
+    --gold: #fbbf24;
+    --white: #ffffff;
+    --light: #f0f6ff;
+    --text-dark: #1e293b;
+    --text-mid: #334155;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: linear-gradient(135deg, var(--deep-blue) 0%, var(--blue) 100%);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 62px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.35);
+  }
+  .nav-logo {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.15rem; font-weight: 800;
+    color: var(--gold); letter-spacing: .5px;
+  }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,.85); text-decoration: none;
+    font-size: .88rem; font-weight: 600; letter-spacing: .4px;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--deep-orange) 0%, var(--orange) 30%, var(--blue) 65%, var(--deep-blue) 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 100px 1.5rem 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 40%, rgba(251,191,36,.18) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 70%, rgba(255,255,255,.08) 0%, transparent 50%);
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: rgba(255,255,255,.15); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 999px; padding: .35rem 1.1rem;
+    font-size: .8rem; font-weight: 700; color: var(--gold);
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    animation: fadeDown .7s ease both;
+  }
+  .hero h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(2.4rem, 7vw, 4.8rem);
+    font-weight: 800; color: var(--white);
+    line-height: 1.1; letter-spacing: -1px;
+    text-shadow: 0 4px 24px rgba(0,0,0,.3);
+    animation: fadeDown .75s .1s ease both;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1rem, 2.5vw, 1.45rem);
+    font-weight: 700; color: rgba(255,255,255,.9);
+    background: var(--deep-blue);
+    border-radius: 8px; padding: .4rem 1.4rem;
+    margin: 1rem 0 .5rem;
+    animation: fadeDown .75s .2s ease both;
+  }
+  .hero-location {
+    font-size: 1rem; color: rgba(255,255,255,.8);
+    margin-bottom: 2rem;
+    animation: fadeDown .75s .3s ease both;
+  }
+  .hero-location span { color: var(--gold); font-weight: 700; }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    animation: fadeDown .75s .4s ease both;
+  }
+  .btn {
+    padding: .75rem 2rem; border-radius: 50px;
+    font-family: 'Baloo 2', cursive; font-size: 1rem; font-weight: 700;
+    cursor: pointer; border: none; text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    display: inline-flex; align-items: center; gap: .4rem;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.25); }
+  .btn-gold { background: var(--gold); color: var(--deep-blue); }
+  .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+
+  .admissions-ribbon {
+    position: absolute; top: 90px; right: -36px;
+    background: var(--gold); color: var(--deep-blue);
+    font-family: 'Baloo 2', cursive; font-weight: 800;
+    font-size: .78rem; letter-spacing: 1px;
+    padding: .5rem 3.5rem; transform: rotate(35deg);
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    white-space: nowrap;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.75} }
+
+  /* hero wave */
+  .hero-wave {
+    position: absolute; bottom: -2px; left: 0; width: 100%;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 1.5rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: .75rem; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: .4rem;
+  }
+  .section-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 800; color: var(--deep-blue);
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+  .section-title span { color: var(--orange); }
+  .divider {
+    width: 60px; height: 4px; border-radius: 4px;
+    background: linear-gradient(90deg, var(--orange), var(--gold));
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── STATS ── */
+  .stats {
+    background: linear-gradient(135deg, var(--deep-blue), var(--blue));
+    padding: 3rem 1.5rem;
+  }
+  .stats-grid {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+    gap: 1.5rem; text-align: center;
+  }
+  .stat-card {
+    background: rgba(255,255,255,.1); border-radius: 16px;
+    padding: 1.6rem 1rem;
+    border: 1px solid rgba(255,255,255,.15);
+    transition: transform .3s;
+  }
+  .stat-card:hover { transform: translateY(-4px); }
+  .stat-num {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2.4rem; font-weight: 800; color: var(--gold);
+  }
+  .stat-label { font-size: .82rem; color: rgba(255,255,255,.8); font-weight: 600; margin-top: .2rem; }
+
+  /* ── FEATURES ── */
+  .features { background: var(--white); }
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    gap: 1.5rem;
+  }
+  .feature-card {
+    background: var(--light); border-radius: 18px;
+    padding: 1.6rem; border: 2px solid transparent;
+    transition: border-color .3s, transform .3s, box-shadow .3s;
+    position: relative; overflow: hidden;
+  }
+  .feature-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--orange), var(--gold));
+    border-radius: 4px 0 0 4px;
+    transform: scaleY(0); transform-origin: top;
+    transition: transform .3s;
+  }
+  .feature-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(249,115,22,.12); }
+  .feature-card:hover::before { transform: scaleY(1); }
+  .feature-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--orange), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1rem;
+  }
+  .feature-card h3 {
+    font-family: 'Baloo 2', cursive; font-weight: 700;
+    font-size: 1rem; color: var(--deep-blue); margin-bottom: .4rem;
+  }
+  .feature-card p { font-size: .84rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── ABOUT ── */
+  .about { background: var(--light); }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: center;
+  }
+  @media(max-width:700px){ .about-inner{ grid-template-columns:1fr; } }
+  .about-visual {
+    background: linear-gradient(135deg, var(--deep-blue), var(--orange));
+    border-radius: 24px; padding: 3rem 2rem; text-align: center;
+    color: white; position: relative; overflow: hidden;
+  }
+  .about-visual::after {
+    content: '🏫'; position: absolute;
+    font-size: 8rem; bottom: -20px; right: -10px;
+    opacity: .15;
+  }
+  .about-visual h3 {
+    font-family: 'Baloo 2', cursive; font-size: 1.3rem; margin-bottom: .5rem;
+  }
+  .about-visual p { font-size: .88rem; opacity: .9; line-height: 1.7; }
+  .about-text p { font-size: .95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+  .tag {
+    background: linear-gradient(135deg, var(--orange), var(--deep-orange));
+    color: white; border-radius: 999px; padding: .3rem .9rem;
+    font-size: .78rem; font-weight: 700;
+  }
+
+  /* ── PRINCIPAL ── */
+  .principal { background: var(--white); }
+  .principal-card {
+    max-width: 680px; margin: 0 auto;
+    background: linear-gradient(135deg, var(--deep-blue) 0%, var(--blue) 100%);
+    border-radius: 28px; padding: 3rem 2.5rem;
+    text-align: center; color: white;
+    box-shadow: 0 20px 60px rgba(30,58,138,.3);
+    position: relative; overflow: hidden;
+  }
+  .principal-card::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%; background: rgba(251,191,36,.12);
+  }
+  .avatar {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange), var(--gold));
+    margin: 0 auto 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.2rem; font-weight: 800;
+    color: white; border: 4px solid rgba(255,255,255,.3);
+    font-family: 'Baloo 2', cursive;
+  }
+  .principal-card h3 {
+    font-family: 'Baloo 2', cursive; font-size: 1.6rem;
+    font-weight: 800; color: var(--gold); margin-bottom: .2rem;
+  }
+  .principal-card .role { font-size: .85rem; opacity: .75; margin-bottom: 1.2rem; }
+  .principal-card .quote {
+    font-size: .92rem; line-height: 1.8; opacity: .9;
+    font-style: italic; margin-bottom: 2rem;
+    border-left: 3px solid var(--gold); padding-left: 1rem; text-align: left;
+  }
+  .contact-pill {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--gold); color: var(--deep-blue);
+    border-radius: 50px; padding: .7rem 2rem;
+    font-family: 'Baloo 2', cursive; font-size: 1.1rem; font-weight: 800;
+    text-decoration: none; transition: transform .2s, box-shadow .2s;
+  }
+  .contact-pill:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--orange), var(--deep-orange));
+    padding: 4rem 1.5rem; text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 800; color: white; margin-bottom: .5rem;
+  }
+  .cta-section p { color: rgba(255,255,255,.85); margin-bottom: 2rem; font-size: .95rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep-blue); color: rgba(255,255,255,.7);
+    padding: 2rem 1.5rem; text-align: center;
+    font-size: .82rem;
+  }
+  footer strong { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🏫 ABVM Junior High School</div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#principal">Principal</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="admissions-ribbon">ADMISSIONS OPEN</div>
+  <div class="badge">⭐ Recognized by Government</div>
+  <h1>Adarsh Bal<br><span>Vidya Mandir</span></h1>
+  <div class="hero-sub">Junior High School</div>
+  <div class="hero-location">📍 <span>Dariyabad, Barabanki</span> · Uttar Pradesh</div>
+  <div class="hero-cta">
+    <a href="tel:9935329238" class="btn btn-gold">📞 Call Now</a>
+    <a href="#features" class="btn btn-outline">Explore School ↓</a>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f0f6ff"/>
+  </svg>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num">8+</div>
+      <div class="stat-label">Key Features</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Govt Recognised</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">✓</div>
+      <div class="stat-label">Smart Classrooms</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">🚌</div>
+      <div class="stat-label">Transport Available</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">🏥</div>
+      <div class="stat-label">Free Health Checkups</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">What We Offer</div>
+      <div class="section-title">Key Features of <span>Our School</span></div>
+      <div class="divider"></div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">👩‍🏫</div>
+        <h3>Qualified & Experienced Teachers</h3>
+        <p>Our dedicated faculty brings deep expertise and a passion for nurturing young minds every day.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">💻</div>
+        <h3>Smart Classes with Computer Education</h3>
+        <p>State-of-the-art smart classrooms with computer literacy programs to prepare students for tomorrow.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🌱</div>
+        <h3>Holistic Development</h3>
+        <p>We focus on the all-round growth of every child — academically, socially, and personally.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📚</div>
+        <h3>Regular Home Study Monitoring</h3>
+        <p>Consistent follow-up on home study ensures students stay on track and build strong study habits.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🎯</div>
+        <h3>Skill Development Programs</h3>
+        <p>Extra classes designed to build practical skills and prepare students beyond the curriculum.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🙏</div>
+        <h3>Promotion of Religious Activities</h3>
+        <p>We cultivate moral values and cultural awareness through meaningful religious and cultural activities.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🏥</div>
+        <h3>Free Health Checkups</h3>
+        <p>Regular free medical checkups ensure every student's health and well-being are looked after.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🚌</div>
+        <h3>Transport Facility Available</h3>
+        <p>Safe and reliable school transport to make daily commutes easy and worry-free for families.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-visual reveal">
+        <h3>Building Bright Futures Since Day One</h3>
+        <p>Adarsh Bal Vidya Mandir is a government-recognised institution committed to delivering quality education in Dariyabad, Barabanki. We believe every child deserves a nurturing environment where they can grow, learn, and thrive.</p>
+        <div style="margin-top:1.5rem; font-size:2.5rem;">🌟 📖 🎓</div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">Our Mission</div>
+        <div class="section-title">Education with <span>Values</span></div>
+        <div class="divider"></div>
+        <p>At ABVM Junior High School, we combine modern teaching methods with strong moral grounding. Our smart classrooms, skilled teachers, and holistic programs create an environment where students are inspired to achieve their very best.</p>
+        <p>We partner closely with parents through home study monitoring and open communication, ensuring each child's journey is supported both at school and at home.</p>
+        <div class="about-tags">
+          <span class="tag">Govt Recognised</span>
+          <span class="tag">Smart Classes</span>
+          <span class="tag">Transport</span>
+          <span class="tag">Health Checkups</span>
+          <span class="tag">Skill Development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPAL -->
+<section class="principal" id="principal">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:2.5rem;" class="reveal">
+      <div class="section-label">Leadership</div>
+      <div class="section-title">Meet Our <span>Principal</span></div>
+      <div class="divider" style="margin:0 auto;"></div>
+    </div>
+    <div class="principal-card reveal">
+      <div class="avatar">SK</div>
+      <h3>Sarvesh Kumar Yadav</h3>
+      <div class="role">Principal — Adarsh Bal Vidya Mandir Junior High School</div>
+      <div class="quote">
+        "Our goal is not just to educate, but to inspire. Every child who walks through our doors carries infinite potential, and it is our privilege to help them discover it."
+      </div>
+      <a href="tel:9935329238" class="contact-pill">📞 99353 29238</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2>🎓 Admissions Are Now Open!</h2>
+  <p>Give your child the best start in life. Seats are limited — reach out today.</p>
+  <a href="tel:9935329238" class="btn btn-gold" style="font-size:1.1rem;">📞 Call 99353 29238</a>
+  <p style="margin-top:1.2rem; font-size:.85rem; color:rgba(255,255,255,.7);">📍 Dariyabad, Barabanki, Uttar Pradesh</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <strong>Adarsh Bal Vidya Mandir Junior High School</strong> · Dariyabad, Barabanki · Recognised by Government of Uttar Pradesh</p>
+  <p style="margin-top:.4rem;">Principal: <strong>Sarvesh Kumar Yadav</strong> · 📞 <strong>99353 29238</strong></p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
